@@ -2,54 +2,62 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Weather Forcast</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <form>
-        Search By City:<br>
-        <input type="text">
-        <button search="weather">search</button>
+    <form id="cityWeather">
+        Search For Weather By City:<br>
+        <input id="city" type="text">
+
+        <button class="weather">Search</button>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
 
-            <div class="city"></div>
-            <div class="wind"></div>
-            <div class="humidity"></div>
-            <div class="temp"></div>
-       
+            //Weather Search button listener
 
+            $("#cityWeather").on("submit", function (event) {
 
-    
-            $.cityName().append(body);
-            let APIKey = "27c1cb8e958edefa8e76e521738fbd32";
+                //console.log(event)
+                event.preventDefault();
+                //$('body').empty();
+                // calling weather
+                let city = $("#city").val();
+                let APIKey = "27c1cb8e958edefa8e76e521738fbd32";
+                let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
 
-            let queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
+                //console.log(response)
+                // this code sends our ajax requests and sets our promise
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function (response) {
+                    console.log(response);
+                    // this line is creating a DIV variable
+                    let weatherDiv = $("<div>");
+                    let p = $("<p>").text("City: " + response.city.name);
+                    let p2 = $("<p>").text("Date: " + response.list[0].dt_txt);
+                    let p3 = $("<p>").text("Temperature: " + response.list[0].main.temp);
+                    let p4 = $("<p>").icon(response.list[0].weather[0].icon)
+                        // the following lines push the response we want from the Json to the html
+                    weatherDiv.append(p);
+                    weatherDiv.append(p2);
+                    weatherDiv.append(p3);
+                    weatherDiv.append(p4);
+                    $("body").append(weatherDiv);
 
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                //console.log(response);
-                // Create CODE HERE to Log the queryURL
-                $(".city").text(response.name);
-                $(".wind").text(response.wind.speed);
-                $(".humidity").text(response.main.humidity);
-                $(".temp").text(response.main.temp);
-
-                // Create CODE HERE to log the resulting object
-                console.log();
-
-                // Create CODE HERE to transfer content to HTML
-
-                // Create CODE HERE to calculate the temperature (converted from Kelvin)
-                // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-                // Create CODE HERE to dump the temperature content into HTML
-
+                })
             });
+
+
+
+
         </script>
+
 </body>
 
 </html>
