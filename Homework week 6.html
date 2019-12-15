@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+        <link rel="stylesheet" href="assets/css/stylesheet.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,7 +25,7 @@
 
                 //console.log(event)
                 event.preventDefault();
-                //$('body').empty();
+                
                 // calling weather
                 let city = $("#city").val();
                 let APIKey = "27c1cb8e958edefa8e76e521738fbd32";
@@ -42,13 +43,100 @@
                     let p = $("<p>").text("City: " + response.city.name);
                     let p2 = $("<p>").text("Date: " + response.list[0].dt_txt);
                     let p3 = $("<p>").text("Temperature: " + response.list[0].main.temp);
-                    let p4 = $("<p>").icon(response.list[0].weather[0].icon)
-                        // the following lines push the response we want from the Json to the html
+                    //let p4 = $("<img>").img(response.list[0].weather[0].icon);
+                    let p5 = $("<p>").text("Humidty: " + response.list[0].main.humidity);
+                    let p6 = $("<p>").text("wind Speed " + response.list[0].wind.speed);
+                    //let p7 = $("<p>").text("UV Index " +);
+                    // the following lines push the response we want from the Json to the html
                     weatherDiv.append(p);
                     weatherDiv.append(p2);
                     weatherDiv.append(p3);
-                    weatherDiv.append(p4);
+                    //weatherDiv.append(p4);
+                    weatherDiv.append(p5);
+                    weatherDiv.append(p6);
+                    //weatherDiv.append(p7);
+
                     $("body").append(weatherDiv);
+
+                    // day two 
+                    let day2Div = $("<div>");
+
+                    let p8 = $("<p>").text("Date: " + response.list[12].dt_txt);
+                    let p9 = $("<p>").text("Temperature: " + response.list[12].main.temp);
+                    //let p10 = $("<img>").img(response.list[0].weather[0].icon);
+                    let p11 = $("<p>").text("Humidty: " + response.list[12].main.humidity);
+                    let p12 = $("<p>").text("wind Speed " + response.list[12].wind.speed);
+                    //let p14 = $("<p>").text("UV Index " +);
+                    // the following lines push the response we want from the Json to the html
+                    day2Div.append(p8);
+                    day2Div.append(p9);
+                    // day2Div.append(p10);
+                    day2Div.append(p11);
+                    day2Div.append(p12);
+                    //0weatherDiv.append(p13);
+
+                    $("body").append(day2Div);
+
+                    //day three
+                    let day3Div = $("<div>");
+
+                    let p15 = $("<p>").text("Date: " + response.list[19].dt_txt);
+                    let p16 = $("<p>").text("Temperature: " + response.list[19].main.temp);
+                    //let p17 = $("<img>").img(response.list[0].weather[0].icon);
+                    let p18 = $("<p>").text("Humidty: " + response.list[19].main.humidity);
+                    let p19 = $("<p>").text("wind Speed " + response.list[19].wind.speed);
+                    //let p20 = $("<p>").text("UV Index " +);
+                    // the following lines push the response we want from the Json to the html
+                    day3Div.append(p15);
+                    day3Div.append(p16);
+                    //day3Div.append(p17);
+                    day3Div.append(p18);
+                    day3Div.append(p19);
+
+                    //weatherDiv.append(p20);
+
+                    $("body").append(day3Div);
+
+                    //day four div
+                    let day4Div = $("<div>");
+
+                    let p21 = $("<p>").text("Date: " + response.list[29].dt_txt);
+                    let p22 = $("<p>").text("Temperature: " + response.list[29].main.temp);
+                    //let p23 = $("<img>").img(response.list[0].weather[0].icon);
+                    let p24 = $("<p>").text("Humidty: " + response.list[29].main.humidity);
+                    let p25 = $("<p>").text("wind Speed " + response.list[29].wind.speed);
+                    //let p26 = $("<p>").text("UV Index " +);
+                    // the following lines push the response we want from the Json to the html
+                    day4Div.append(p21);
+                    day4Div.append(p22);
+                    //day4Div.append(p23);
+                    day4Div.append(p24);
+                    day4Div.append(p25);
+
+                    //weatherDiv.append(p26);
+
+                    $("body").append(day4Div);
+
+                    //day 5 div
+                    let day5Div = $("<div>");
+
+                    let p26 = $("<p>").text("Date: " + response.list[39].dt_txt);
+                    let p27 = $("<p>").text("Temperature: " + response.list[39].main.temp);
+                    //let p28 = $("<img>").img(response.list[0].weather[0].icon);
+                    let p29 = $("<p>").text("Humidty: " + response.list[39].main.humidity);
+                    let p30 = $("<p>").text("wind Speed " + response.list[39].wind.speed);
+                    //let p31 = $("<p>").text("UV Index " +);
+                    // the following lines push the response we want from the Json to the html
+                    day5Div.append(p26);
+                    day5Div.append(p27);
+                    //dayDiv.append(p28);
+                    day5Div.append(p29);
+                    day5Div.append(p30); 
+
+                    //weatherDiv.append(p31);
+
+                    $("body").append(day5Div);
+
 
                 })
             });
