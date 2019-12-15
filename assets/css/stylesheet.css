@@ -1,0 +1,31 @@
+h2 {
+    font-family: cursive;
+    color:black;
+}
+
+h4 {
+    font-family: sans-serif;
+    Color:black;
+}
+body {
+    background-image: url("assets/images/criss-cross.png"); 
+    width: 100%;
+    
+
+   }
+
+
+   .jumbotron{
+    background-color:beige;
+
+   }
+ 
+ 
+
+
+    .div {
+        padding: 25px;
+        text-align: center;
+
+
+    }
